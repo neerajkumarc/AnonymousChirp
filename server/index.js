@@ -1,6 +1,7 @@
 const PORT = process.env.PORT || 3001;
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors")
 require("dotenv").config();
 const app = express();
 const postModel = require("./models/postModel");
@@ -18,7 +19,7 @@ mongoose.connect(process.env.MONGO_URI).then(() => {
 });
 
 app.use(express.json());
-
+app.use(cors())
 app.get("/", async (req, res) => {
   const allPost = await postModel.find({});
   try {
