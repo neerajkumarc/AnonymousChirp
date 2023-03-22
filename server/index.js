@@ -1,8 +1,8 @@
-const PORT = process.env.PORT || 3001;
-const express = require("express");
-const mongoose = require("mongoose");
-require("dotenv").config();
-const app = express();
+// const PORT = process.env.PORT || 3001;
+// const express = require("express");
+// const mongoose = require("mongoose");
+// require("dotenv").config();
+// const app = express();
 // const postModel = require("./models/postModel");
 // const {
 //   uniqueNamesGenerator,
@@ -10,24 +10,24 @@ const app = express();
 //   names,
 // } = require("unique-names-generator");
 
-mongoose.connect(process.env.MONGO_URI).then(() => {
-  console.log("database connected...");
-  app.listen(PORT, () => {
-    console.log("server started on port", PORT);
-  });
-});
+// mongoose.connect(process.env.MONGO_URI).then(() => {
+//   console.log("database connected...");
+//   app.listen(PORT, () => {
+//     console.log("server started on port", PORT);
+//   });
+// });
 
 // app.use(express.json());
 
-app.get("/", async (req, res) => {
+// app.get("/", async (req, res) => {
   // const allPost = await postModel.find({});
-  try {
+  // try {
     // res.status(200).json(allPost);
-    res.send("hello")
-  } catch (error) {
-    res.status(500).json(error);
-  }
-});
+//     res.send("hello")
+//   } catch (error) {
+//     res.status(500).json(error);
+//   }
+// });
 
 // app.post("/", async (req, res) => {
 //   const post = req.body.post;
@@ -43,13 +43,17 @@ app.get("/", async (req, res) => {
 //   }
 // });
 
-// const PORT = process.env.PORT || 3001;
-// const express = require("express");
-// const app = express();
-// app.get("/",(req,res)=>{
-// res.end("hello")
-// }
-// )
-// app.listen(PORT, () => {
-//   console.log("server started on port", PORT);
-// });
+const PORT = process.env.PORT || 3001;
+const express = require("express");
+const app = express();
+const mongoose = require("mongoose")
+mongoose.connect(process.env.MONGO_URI).then(()=>{
+  console.log("database connected...")
+})
+app.get("/",(req,res)=>{
+res.end("hello")
+}
+)
+app.listen(PORT, () => {
+  console.log("server started on port", PORT);
+});
