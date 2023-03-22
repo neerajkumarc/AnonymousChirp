@@ -3,7 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 require("dotenv").config();
 const app = express();
-const postModel = require("./models/postModel");
+// const postModel = require("./models/postModel");
 // const {
 //   uniqueNamesGenerator,
 //   animals,
@@ -20,9 +20,10 @@ mongoose.connect(process.env.MONGO_URI).then(() => {
 // app.use(express.json());
 
 app.get("/", async (req, res) => {
-  const allPost = await postModel.find({});
+  // const allPost = await postModel.find({});
   try {
-    res.status(200).json(allPost);
+    // res.status(200).json(allPost);
+    res.send("hello")
   } catch (error) {
     res.status(500).json(error);
   }
