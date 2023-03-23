@@ -1,7 +1,7 @@
 const PORT = process.env.PORT || 3001;
 const express = require("express");
 const mongoose = require("mongoose");
-const cors = require("cors")
+const cors = require("cors");
 require("dotenv").config();
 const app = express();
 const postModel = require("./models/postModel");
@@ -19,9 +19,15 @@ mongoose.connect(process.env.MONGO_URI).then(() => {
 });
 
 app.use(express.json());
-app.use(cors())
+app.use(cors());
 app.get("/", async (req, res) => {
-  const allPost = await postModel.find().sort({"createdAt":-1});
+  const skip = req.query.skip || 0;
+  const limit = req.query.limit || 8;
+  const allPost = await postModel
+    .find()
+    .sort({ createdAt: -1 })
+    .skip(skip)
+    .limit(limit);
   try {
     res.status(200).json(allPost);
   } catch (error) {
