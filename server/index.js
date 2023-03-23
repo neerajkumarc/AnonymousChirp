@@ -36,7 +36,7 @@ app.get("/", async (req, res) => {
 });
 
 app.post("/", async (req, res) => {
-  const imgArr = ["pixel-art", "open-peeps", "bottts","croodles","croodles-neutral", "big-smile", "thumbs", "persona"]
+  const imgArr = ["pixel-art","adventurer-neutral", "open-peeps", "bottts","croodles","fun-emoji","big-smile","big-ears","bottts-neutral", "personas", "lorelei"]
   const random = Math.floor(Math.random()*imgArr.length)
   const post = req.body.post;
   const name = uniqueNamesGenerator({ dictionaries: [names, animals] });
