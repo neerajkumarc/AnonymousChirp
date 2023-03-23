@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* *{
+    outline: 2px solid red;
+} */
+
+@font-face {
+  font-family: "myfont";
+  src: url("../src/assets/fonts/lemonmilk.otf") format("truetype");
+}
+
+h1,h3{
+    font-family: "myfont";
+}
+
+body {
+
+  background: linear-gradient(rgb(30, 30, 30), black);
+  min-height: 100vh;
+  color: white;
+}
