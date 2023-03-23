@@ -11,7 +11,7 @@ const {
   names,
 } = require("unique-names-generator");
 
-mongoose.connect("mongodb://127.0.0.1:27017/anonymouschirp"||process.env.MONGO_URI).then(() => {
+mongoose.connect(process.env.MONGO_URI).then(() => {
   console.log("database connected...");
   app.listen(PORT, () => {
     console.log("server started on port", PORT);
