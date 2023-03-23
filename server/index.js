@@ -21,7 +21,7 @@ mongoose.connect(process.env.MONGO_URI).then(() => {
 app.use(express.json());
 app.use(cors())
 app.get("/", async (req, res) => {
-  const allPost = await postModel.find({}).sort({createdAt:-1});
+  const allPost = await postModel.find().sort({"createdAt":-1});
   try {
     res.status(200).json(allPost);
   } catch (error) {
