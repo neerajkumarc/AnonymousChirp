@@ -11,7 +11,7 @@ const {
   names,
 } = require("unique-names-generator");
 
-mongoose.connect(process.env.MONGO_URI).then(() => {
+mongoose.connect("mongodb://127.0.0.1:27017/anonymouschirp"||process.env.MONGO_URI).then(() => {
   console.log("database connected...");
   app.listen(PORT, () => {
     console.log("server started on port", PORT);
@@ -36,11 +36,14 @@ app.get("/", async (req, res) => {
 });
 
 app.post("/", async (req, res) => {
+  const imgArr = ["pixel-art", "open-peeps", "bottts","croodles","croodles-neutral", "big-smile", "thumbs", "persona"]
+  const random = Math.floor(Math.random()*imgArr.length)
   const post = req.body.post;
   const name = uniqueNamesGenerator({ dictionaries: [names, animals] });
+  const img = `https://api.dicebear.com/5.x/${imgArr[random]}/svg`
   try {
     if (post) {
-      const data = await postModel.create({ name, post });
+      const data = await postModel.create({ name, post, img});
       res.json(data);
     } else {
       res.status(400).json({ msg: "post is required" });
