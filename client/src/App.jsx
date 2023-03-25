@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-
+import {RotatingLines} from "react-loader-spinner"
 const App = () => {
   const [loading, setLoading] = useState(false);
   const [allPost, setAllPost] = useState([]);
@@ -55,7 +55,16 @@ const App = () => {
             </button>
           </div>
         </div>
-        {loading && <p className="text-center">Loading...</p>}
+        {loading && (
+          <div className="flex justify-center items-center"><RotatingLines
+            strokeColor="grey"
+            strokeWidth="5"
+            animationDuration="0.75"
+            width="96"
+            visible={true}
+            
+          /></div>
+        )}
         <div className="flex justify-center items-center flex-col mt-2">
           {allPost.map((post) => {
             return (
@@ -72,7 +81,9 @@ const App = () => {
                     alt="avatar"
                     loading="lazy"
                   />
-                  <h3 className="text-sm text-green-300 tracking-widest">{post.name}</h3>
+                  <h3 className="text-sm text-green-300 tracking-widest">
+                    {post.name}
+                  </h3>
                 </div>
                 <p className=" break-words mx-10">{post.post}</p>
                 <small className="text-gray-400 mx-10">{post.createdAt}</small>
