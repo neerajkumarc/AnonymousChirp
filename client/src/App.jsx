@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import {RotatingLines} from "react-loader-spinner"
-import { Post } from "./components/post";
+import { Post } from "./components/Post";
 const App = () => {
   const [loading, setLoading] = useState(false);
   const [allPost, setAllPost] = useState([]);
