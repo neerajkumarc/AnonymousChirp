@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import {RotatingLines} from "react-loader-spinner"
+import moment from "moment"
 const App = () => {
   const [loading, setLoading] = useState(false);
   const [allPost, setAllPost] = useState([]);
@@ -86,7 +87,7 @@ const App = () => {
                   </h3>
                 </div>
                 <p className=" break-words mx-10">{post.post}</p>
-                <small className="text-gray-400 mx-10">{post.createdAt}</small>
+                <small className="text-gray-400 mx-10">{moment(post.createdAt).fromNow()}</small>
               </div>
             );
           })}
