@@ -19,6 +19,7 @@ const App = () => {
 
   const [post, setPost] = useState("");
   const handleClick = async () => {
+    if(!post)return;
     setLoading(true);
     await axios.post("https://anonymouschirp-api.vercel.app/", { post });
     setPost("");
