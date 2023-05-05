@@ -35,9 +35,7 @@ const App = () => {
           <h1 className="text-2xl font-bold  text-center text-green-500 tracking-[2px]">
             ANONYMOUSCHIRP
           </h1>
-          <p className="text-center text-orange-200 m-2">
-            (UI will be changed soon!)
-          </p>
+
           <div className="flex justify-center items-center mb-4">
             <textarea
               value={post}
